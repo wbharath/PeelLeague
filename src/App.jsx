@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { league, stats, teams, results, standings, gallery, sponsors, champions, awards } from './data'
+import { league, stats, teams, results, standings, standingsPCL2, gallery, sponsors, champions, awards } from './data'
 
 const teamBy = Object.fromEntries(teams.map((t) => [t.short, t]))
 const fmtDate = (d) =>
@@ -44,10 +44,7 @@ function Header() {
       <div className="container header-inner">
         <a href="#top" className="brand" onClick={() => setOpen(false)}>
           <Logo />
-          <span>
-            <strong>Super Peel</strong>
-            <small>League</small>
-          </span>
+          <span className="brand-name">Super <span className="gold">Peel</span> League</span>
         </a>
         <nav className={`nav ${open ? 'open' : ''}`}>
           {NAV.map(([id, label]) => (
@@ -89,11 +86,13 @@ function Hero() {
       <div className="hero-bg" />
       <div className="container hero-inner">
         <div className="hero-copy">
-          <span className="eyebrow">Season {league.season} · {league.location}</span>
-          <h1>
-            Super <span className="gold">Peel</span> League
-          </h1>
-          <p className="lead">{league.tagline}. Multiple teams. One trophy. Every weekend, all summer long.</p>
+          <span className="eyebrow">Season {league.season} · Coming Soon</span>
+          <h1>Super <span className="gold">Peel</span> League</h1>
+          <div className="league-tags">
+            <span className="league-tag">PCL</span>
+            <span className="league-tag">SPL</span>
+          </div>
+          <p className="lead">{league.tagline}. Multiple teams. One trophy. All summer long.</p>
           <div className="hero-actions">
             <a href="#standings" className="btn btn-gold">View Standings</a>
             <a href={league.registerUrl} className="btn btn-ghost">Register a Team</a>
@@ -123,7 +122,7 @@ function Hero() {
         <div className="ticker-track">
           {[...results, ...results].map((r, i) => (
             <span key={i}>
-              <b>{r.stage}</b> {teamBy[r.home].short} {r.homeScore} v {teamBy[r.away].short} {r.awayScore} — {r.result}
+              <b className={r.league === 'pcl' ? 'pcl' : ''}>{r.stage}</b> {teamBy[r.home].short} {r.homeScore} v {teamBy[r.away].short} {r.awayScore} — {r.result}
             </span>
           ))}
         </div>
@@ -143,25 +142,26 @@ function SectionHead({ kicker, title, children }) {
 }
 
 function About() {
+  const pclChamp = champions.find((c) => c.season === 'PCL Season 2')
   return (
     <section className="section" id="about">
       <div className="container about">
         <div>
           <SectionHead kicker="About the league" title="Cricket, Peel style" />
           <p>
-            The Super Peel League brings together the best club cricketers from Brampton, Mississauga and Caledon in a
-            fast-paced T20 format. Founded by local players for local players, SPL is about competitive cricket,
+            The Super Peel League brings together the best club cricketers from Brampton, Mississauga and GTA in a
+            fast-paced cricket format. Founded by local players for local players, it is about competitive cricket,
             community and growing the game across Peel Region.
           </p>
           <p>
-            Matches run every weekend from May to September, wrapping up with semi-finals and a Finals Day under the
+            Matches run every weekday from May to September, wrapping up with semi-finals and a Finals Day under the
             lights.
           </p>
           <div className="champ">
             <span className="trophy">🏆</span>
             <div>
-              <small>SPL Season 8 Champions</small>
-              <strong>{champions[0].champion}</strong>
+              <small>PCL Season 2 Champions</small>
+              <strong>{pclChamp.champion}</strong>
             </div>
           </div>
         </div>
@@ -179,12 +179,35 @@ function About() {
 }
 
 
+const STANDING_TABLES = [
+  { id: 'pcl2', label: 'PCL Season 2', kicker: 'Peel Cricket League', data: standingsPCL2 },
+  { id: 'spl8', label: 'SPL Season 8', kicker: 'Super Peel League',   data: standings },
+]
+
 function Standings() {
-  const rows = [...standings].sort((a, b) => b.w * 2 + b.nr - (a.w * 2 + a.nr) || parseFloat(b.nrr) - parseFloat(a.nrr))
+  const [active, setActive] = useState(0)
+
+  useEffect(() => {
+    const id = setInterval(() => setActive((a) => (a + 1) % STANDING_TABLES.length), 5000)
+    return () => clearInterval(id)
+  }, [])
+
+  const cur = STANDING_TABLES[active]
+  const rows = [...cur.data].sort((a, b) => b.pts - a.pts || parseFloat(b.nrr) - parseFloat(a.nrr))
+
   return (
     <section className="section" id="standings">
       <div className="container">
-        <SectionHead kicker="SPL Season 8" title="Points Table">Top four qualify for the semi-finals. Win = 2 pts, No result = 1 pt.</SectionHead>
+        <div className="standings-top">
+          <SectionHead kicker={cur.kicker} title="Points Table">Top four qualify for the semi-finals.</SectionHead>
+          <div className="standings-toggle">
+            {STANDING_TABLES.map((t, i) => (
+              <button key={t.id} className={active === i ? 'active' : ''} onClick={() => setActive(i)}>
+                {t.label}
+              </button>
+            ))}
+          </div>
+        </div>
         <div className="table-wrap">
           <table className="table">
             <thead>
@@ -197,7 +220,7 @@ function Standings() {
                   <td className="left team-cell"><TeamBadge code={r.team} size="sm" />{teamBy[r.team].name}</td>
                   <td>{r.p}</td><td>{r.w}</td><td>{r.l}</td><td>{r.nr}</td>
                   <td className={r.nrr.startsWith('+') ? 'pos' : 'neg'}>{r.nrr}</td>
-                  <td><b>{r.w * 2 + r.nr}</b></td>
+                  <td><b>{r.pts}</b></td>
                 </tr>
               ))}
             </tbody>
@@ -423,7 +446,7 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="container footer-inner">
-        <div className="brand"><Logo size={36} /><span><strong>Super Peel</strong><small>League</small></span></div>
+        <div className="brand"><Logo size={36} /><span className="brand-name">Super <span className="gold">Peel</span> League</span></div>
         <nav>{NAV.map(([id, label]) => <a key={id} href={`#${id}`}>{label}</a>)}</nav>
         <div className="socials">
           {Object.entries(league.socials).map(([k, url]) => (

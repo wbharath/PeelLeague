@@ -41,9 +41,7 @@ h1, h2, h3 { font-family: var(--display); text-transform: uppercase; letter-spac
 .header.scrolled { background: rgba(10, 26, 51, 0.96); backdrop-filter: blur(8px); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25); }
 .header-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
 .brand { display: flex; align-items: center; gap: 10px; color: #fff; }
-.brand span { display: flex; flex-direction: column; line-height: 1; font-family: var(--display); text-transform: uppercase; }
-.brand strong { font-size: 1.25rem; letter-spacing: 0.03em; }
-.brand small { font-size: 0.75rem; color: var(--gold); letter-spacing: 0.35em; margin-top: 3px; }
+.brand-name { font-family: var(--display); font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.03em; color: #fff; white-space: nowrap; }
 .nav { display: flex; align-items: center; gap: 28px; }
 .nav a { color: rgba(255, 255, 255, 0.85); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.06em; position: relative; }
 .nav a:not(.btn):hover { color: #fff; }
@@ -65,7 +63,9 @@ h1, h2, h3 { font-family: var(--display); text-transform: uppercase; letter-spac
 .hero-inner { position: relative; display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: center; padding-top: 110px; padding-bottom: 90px; }
 .eyebrow, .kicker { display: inline-block; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); }
 .eyebrow { padding: 6px 14px; border: 1px solid rgba(245, 184, 0, 0.4); border-radius: 999px; background: rgba(245, 184, 0, 0.08); }
-.hero h1 { font-size: clamp(3rem, 8vw, 6.2rem); margin: 22px 0 18px; }
+.hero h1 { font-size: clamp(2.4rem, 6vw, 5rem); margin: 16px 0 10px; white-space: nowrap; }
+.league-tags { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.league-tag { display: inline-block; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--gold); padding: 5px 12px; border: 1px solid rgba(245,184,0,0.4); border-radius: 999px; background: rgba(245,184,0,0.08); }
 .lead { font-size: 1.15rem; color: rgba(255, 255, 255, 0.8); max-width: 520px; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
 .hero-card { background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12); backdrop-filter: blur(12px); border-radius: 20px; padding: 28px; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3); }
@@ -86,6 +86,7 @@ h1, h2, h3 { font-family: var(--display); text-transform: uppercase; letter-spac
 .ticker { position: absolute; bottom: 0; left: 0; right: 0; background: var(--gold); color: var(--navy); overflow: hidden; font-weight: 600; font-size: 0.88rem; }
 .ticker-track { display: flex; gap: 60px; padding: 11px 0; white-space: nowrap; width: max-content; animation: ticker 40s linear infinite; }
 .ticker b { text-transform: uppercase; background: var(--navy); color: var(--gold); padding: 2px 8px; border-radius: 4px; margin-right: 6px; font-size: 0.75rem; }
+.ticker b.pcl { background: var(--red); color: #fff; }
 @keyframes ticker { to { transform: translateX(-50%); } }
 
 /* Badges */
@@ -134,6 +135,13 @@ h1, h2, h3 { font-family: var(--display); text-transform: uppercase; letter-spac
 .score-row b { font-family: var(--display); font-size: 1.15rem; }
 .match-foot { padding: 12px 20px; background: var(--bg-alt); font-size: 0.82rem; color: var(--muted); }
 .match-foot.result { color: var(--green); font-weight: 700; }
+
+/* Standings toggle */
+.standings-top { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px; }
+.standings-top .section-head { margin-bottom: 0; }
+.standings-toggle { display: flex; background: var(--bg-alt); border-radius: 999px; padding: 4px; flex-shrink: 0; margin-bottom: 16px; }
+.standings-toggle button { padding: 8px 22px; border-radius: 999px; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.06em; color: var(--muted); transition: all 0.2s; }
+.standings-toggle button.active { background: var(--navy); color: #fff; }
 
 /* Table */
 .table-wrap { overflow-x: auto; border-radius: var(--radius); box-shadow: var(--shadow); background: #fff; }
@@ -280,7 +288,7 @@ h1, h2, h3 { font-family: var(--display); text-transform: uppercase; letter-spac
   .section { padding: 60px 0; }
   .section-head { margin-bottom: 28px; }
   .hero-inner { padding-top: 88px; padding-bottom: 60px; gap: 28px; }
-  .hero h1 { font-size: clamp(2.4rem, 9vw, 3.4rem); margin: 16px 0 14px; }
+  .hero h1 { font-size: clamp(1.8rem, 8vw, 2.8rem); margin: 12px 0 8px; white-space: nowrap; }
   .lead { font-size: 1rem; }
   .hero-card { padding: 20px 16px; }
   .countdown { gap: 8px; }

@@ -6,7 +6,7 @@ export const league = {
   seasonStart: '2027-05-15T10:00:00-04:00',
   email: 'info@superpeelleague.ca',
   phone: '+1 (905) 555-0142',
-  location: 'Brampton · Mississauga · Caledon',
+  location: 'Brampton · Mississauga · GTA',
   registerUrl: '#contact',
   socials: {
     instagram: 'https://instagram.com/',
@@ -22,7 +22,7 @@ export const stats = [
   { value: '5', label: 'Grounds' },
 ]
 
-// All teams across SPL seasons — combined Peel Region roster
+// All Peel Region clubs — SPL and PCL combined
 export const teams = [
   // SPL Season 8
   { name: 'Black Caps CC',        short: 'BCC', color: '#111827' },
@@ -45,24 +45,54 @@ export const teams = [
   { name: 'MG Boys',              short: 'MGB', color: '#16a34a' },
   { name: 'NovaStars',            short: 'NST', color: '#9333ea' },
   { name: 'Legion XI',            short: 'LGX', color: '#64748b' },
+  // PCL Season 2
+  { name: 'Swarajya CC',          short: 'SCC', color: '#166534' },
+  { name: 'Haryana Hurricanes',   short: 'HHU', color: '#c2410c' },
+  { name: 'Knight Watchmen',      short: 'KNW', color: '#1e40af' },
+  { name: 'WI Sports Toronto',    short: 'WST', color: '#0c4a6e' },
+  { name: 'Toronto Galacticos',   short: 'TGA', color: '#134e4a' },
+  { name: 'Cosmic Sports Club',   short: 'CSC', color: '#581c87' },
+  { name: 'GTA Capital Warriors', short: 'GCW', color: '#991b1b' },
+  { name: 'Thunder Strikers',     short: 'THS', color: '#92400e' },
+  { name: 'Accenture CC',         short: 'ACC', color: '#1e3a5f' },
+  { name: 'WI Sports Brampton',   short: 'WSB', color: '#7f1d1d' },
+  // PCL 2025
+  { name: 'Supernovas CC',        short: 'SPC', color: '#f59e0b' },
 ]
 
-// SPL Season 8 knockout results (for ticker)
-export const results = [
-  { date: '2026-10-06', stage: 'SPL S8 Final',  home: 'CVR', homeScore: '101/2 (13.2)',  away: 'BCC', awayScore: '100/9 (14.0)',  result: 'City View Royals won by 8 wickets' },
-  { date: '2026-10-03', stage: 'SPL S8 SF2',    home: 'CVR', homeScore: '186/2 (13.2)',  away: 'STL', awayScore: '184/7 (15.0)',  result: 'City View Royals won by 8 wickets' },
-  { date: '2026-10-02', stage: 'SPL S8 SF1',    home: 'BCC', homeScore: '152/10 (14.2)', away: 'MRY', awayScore: '99/10 (13.5)', result: 'Black Caps CC won by 53 runs' },
+// PCL Season 2 — League Stage standings (10 pts/win, 5 pts/tie or NR)
+export const standingsPCL2 = [
+  { team: 'SCC', p: 7, w: 6, l: 1, nr: 0, nrr: '+2.053', pts: 60 },
+  { team: 'HHU', p: 7, w: 5, l: 2, nr: 0, nrr: '+1.725', pts: 50 },
+  { team: 'KNW', p: 7, w: 5, l: 2, nr: 0, nrr: '+0.421', pts: 50 },
+  { team: 'WST', p: 7, w: 4, l: 2, nr: 1, nrr: '+0.186', pts: 45 },
+  { team: 'TGA', p: 7, w: 4, l: 3, nr: 0, nrr: '-0.428', pts: 40 },
+  { team: 'CSC', p: 7, w: 2, l: 3, nr: 2, nrr: '-0.056', pts: 30 },
+  { team: 'GCW', p: 7, w: 2, l: 4, nr: 1, nrr: '+0.527', pts: 25 },
+  { team: 'THS', p: 7, w: 2, l: 4, nr: 1, nrr: '-0.869', pts: 25 },
+  { team: 'TTN', p: 7, w: 0, l: 4, nr: 3, nrr: '-1.228', pts: 15 },
+  { team: 'ACC', p: 7, w: 1, l: 6, nr: 0, nrr: '-2.756', pts: 10 },
 ]
 
-// SPL Season 8 — League Stage standings
+// SPL Season 8 — League Stage standings (2 pts/win)
 export const standings = [
-  { team: 'BCC', p: 6, w: 5, l: 1, nr: 0, nrr: '+3.893' },
-  { team: 'STL', p: 6, w: 4, l: 2, nr: 0, nrr: '+0.403' },
-  { team: 'MRY', p: 6, w: 4, l: 2, nr: 0, nrr: '-0.257' },
-  { team: 'CVR', p: 6, w: 3, l: 3, nr: 0, nrr: '-0.029' },
-  { team: 'TST', p: 6, w: 3, l: 3, nr: 0, nrr: '-1.779' },
-  { team: 'BEA', p: 6, w: 1, l: 5, nr: 0, nrr: '-2.024' },
-  { team: 'GJS', p: 6, w: 1, l: 5, nr: 0, nrr: '-3.048' },
+  { team: 'BCC', p: 6, w: 5, l: 1, nr: 0, nrr: '+3.893', pts: 10 },
+  { team: 'STL', p: 6, w: 4, l: 2, nr: 0, nrr: '+0.403', pts:  8 },
+  { team: 'MRY', p: 6, w: 4, l: 2, nr: 0, nrr: '-0.257', pts:  8 },
+  { team: 'CVR', p: 6, w: 3, l: 3, nr: 0, nrr: '-0.029', pts:  6 },
+  { team: 'TST', p: 6, w: 3, l: 3, nr: 0, nrr: '-1.779', pts:  6 },
+  { team: 'BEA', p: 6, w: 1, l: 5, nr: 0, nrr: '-2.024', pts:  2 },
+  { team: 'GJS', p: 6, w: 1, l: 5, nr: 0, nrr: '-3.048', pts:  2 },
+]
+
+// Knockout results for the live ticker (PCL first, then SPL)
+export const results = [
+  { date: '2026-10-01', stage: 'PCL S2 Final', league: 'pcl', home: 'SCC', homeScore: '175/6 (20.0)',  away: 'HHU', awayScore: '113/10 (18.1)', result: 'Swarajya CC won by 62 runs' },
+  { date: '2026-09-29', stage: 'PCL S2 SF',    league: 'pcl', home: 'HHU', homeScore: '207/5 (20.0)',  away: 'KNW', awayScore: '189/7 (20.0)',  result: 'Haryana Hurricanes won by 18 runs' },
+  { date: '2026-09-29', stage: 'PCL S2 SF',    league: 'pcl', home: 'SCC', homeScore: '225/9 (20.0)',  away: 'WSB', awayScore: '216/10 (19.3)', result: 'Swarajya CC won by 9 runs' },
+  { date: '2026-10-06', stage: 'SPL S8 Final', league: 'spl', home: 'CVR', homeScore: '101/2 (13.2)',  away: 'BCC', awayScore: '100/9 (14.0)',  result: 'City View Royals won by 8 wickets' },
+  { date: '2026-10-03', stage: 'SPL S8 SF',    league: 'spl', home: 'CVR', homeScore: '186/2 (13.2)',  away: 'STL', awayScore: '184/7 (15.0)',  result: 'City View Royals won by 8 wickets' },
+  { date: '2026-10-02', stage: 'SPL S8 SF',    league: 'spl', home: 'BCC', homeScore: '152/10 (14.2)', away: 'MRY', awayScore: '99/10 (13.5)',  result: 'Black Caps CC won by 53 runs' },
 ]
 
 const g = (n) => `/gallery/${n}.jpeg`
@@ -111,28 +141,36 @@ export const gallery = [
   { src: g('3'),   caption: 'PCL 2026 Weekday League — Awards & Recognitions',   category: 'Match Day' },
 ]
 
-// Season award winners — no player photos, text-only display
+// Season award winners — PCL first, then SPL
 export const awards = [
-  // SPL Season 8
-  { season: 'SPL Season 8 · 2026', award: 'Player of the Tournament', player: 'Gaggi Mand',       team: 'Black Caps CC' },
-  { season: 'SPL Season 8 · 2026', award: 'Best Batter',              player: 'Gaggi Mand',       team: 'Black Caps CC' },
-  { season: 'SPL Season 8 · 2026', award: 'Best Bowler',              player: 'Raviraj Shelke',   team: 'Mississauga Royals' },
-  { season: 'SPL Season 8 · 2026', award: 'Best Fielder',             player: 'Jashandeep Singh', team: 'Black Caps CC' },
-  // SPL Season 7
-  { season: 'SPL Season 7 · 2026', award: 'Player of the Tournament', player: 'Pathik Tadvi',     team: 'Rising Knights' },
-  { season: 'SPL Season 7 · 2026', award: 'Best Batter',              player: 'Pathik Tadvi',     team: 'Rising Knights' },
-  { season: 'SPL Season 7 · 2026', award: 'Best Bowler',              player: 'Abdul',            team: 'Derry Cricket Club' },
-  { season: 'SPL Season 7 · 2026', award: 'Best Fielder',             player: 'Vamsi Vasireddy',  team: 'Derry Cricket Club' },
+  // PCL Season 2 (2026)
+  { season: 'PCL Season 2 · 2026', award: 'Player of the Tournament', player: 'Ishan Khanna',       team: 'WI Sports Brampton' },
+  { season: 'PCL Season 2 · 2026', award: 'Best Batter',              player: 'Gurpreet Singh',     team: 'Haryana Hurricanes' },
+  { season: 'PCL Season 2 · 2026', award: 'Best Bowler',              player: 'Akhil Kumar',        team: 'WI Sports Brampton' },
+  { season: 'PCL Season 2 · 2026', award: 'Best Fielder',             player: 'Mohdeep Singh',      team: 'WI Sports Brampton' },
+  // PCL 2025
+  { season: 'PCL 2025',            award: 'Best Batsman',             player: 'Addy',               team: '—' },
+  { season: 'PCL 2025',            award: 'Best Bowler',              player: 'Deepan Chennimalai', team: 'KNIGHT Watchmen' },
+  // SPL Season 8 (2026)
+  { season: 'SPL Season 8 · 2026', award: 'Player of the Tournament', player: 'Gaggi Mand',         team: 'Black Caps CC' },
+  { season: 'SPL Season 8 · 2026', award: 'Best Batter',              player: 'Gaggi Mand',         team: 'Black Caps CC' },
+  { season: 'SPL Season 8 · 2026', award: 'Best Bowler',              player: 'Raviraj Shelke',     team: 'Mississauga Royals' },
+  { season: 'SPL Season 8 · 2026', award: 'Best Fielder',             player: 'Jashandeep Singh',   team: 'Black Caps CC' },
+  // SPL Season 7 (2026)
+  { season: 'SPL Season 7 · 2026', award: 'Player of the Tournament', player: 'Pathik Tadvi',       team: 'Rising Knights' },
+  { season: 'SPL Season 7 · 2026', award: 'Best Batter',              player: 'Pathik Tadvi',       team: 'Rising Knights' },
+  { season: 'SPL Season 7 · 2026', award: 'Best Bowler',              player: 'Abdul',              team: 'Derry Cricket Club' },
+  { season: 'SPL Season 7 · 2026', award: 'Best Fielder',             player: 'Vamsi Vasireddy',    team: 'Derry Cricket Club' },
 ]
 
 export const champions = [
   // SPL Seasons
-  { season: 'SPL Season 8', league: 'Super Peel League',   champion: 'City View Royals',      runnerUp: 'Black Caps CC',       src: g('6') },
-  { season: 'SPL Season 7', league: 'Super Peel League',   champion: 'Derry Cricket Club',    runnerUp: '—',                   src: g('8') },
-  { season: 'SPL Season 4', league: 'Super Peel League',   champion: 'Stallions CC',          runnerUp: '—',                   src: g('11') },
+  { season: 'SPL Season 8',    league: 'Super Peel League',   champion: 'City View Royals', runnerUp: 'Black Caps CC',      src: g('6') },
+  { season: 'SPL Season 7',    league: 'Super Peel League',   champion: 'Derry Cricket Club', runnerUp: '—',               src: g('8') },
+  { season: 'SPL Season 4',    league: 'Super Peel League',   champion: 'Stallions CC',     runnerUp: '—',                  src: g('11') },
   // PCL Seasons
-  { season: 'PCL Season 2', league: 'Peel Cricket League', champion: 'Swarajya CC',           runnerUp: 'Haryana Hurricanes',  src: g('wa1') },
-  { season: 'PCL-1 Hard Ball', league: 'Peel Cricket League', champion: 'Telugu Titans',      runnerUp: 'Cosmic CC',           src: g('4') },
+  { season: 'PCL Season 2',    league: 'Peel Cricket League', champion: 'Swarajya CC',      runnerUp: 'Haryana Hurricanes', src: g('wa1') },
+  { season: 'PCL-1 Hard Ball', league: 'Peel Cricket League', champion: 'Telugu Titans',    runnerUp: 'Cosmic CC',          src: g('4') },
 ]
 
 export const sponsors = [
