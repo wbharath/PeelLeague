@@ -6,30 +6,20 @@ const teamBy = Object.fromEntries(teams.map((t) => [t.short, t]))
 function CricketBall({ size = 18 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 40 40" fill="none" style={{ display: 'inline-block', verticalAlign: 'middle' }}>
-      {/* white ball base */}
-      <circle cx="20" cy="20" r="18" fill="#F0F0F0" />
-      {/* shadow shading on bottom-right */}
-      <circle cx="20" cy="20" r="18" fill="url(#ballShade)" />
-      <defs>
-        <radialGradient id="ballShade" cx="38%" cy="35%" r="65%">
-          <stop offset="0%" stopColor="white" stopOpacity="0.7" />
-          <stop offset="100%" stopColor="#888" stopOpacity="0.35" />
-        </radialGradient>
-      </defs>
-      {/* left seam line */}
-      <path d="M17 3 C13 10 13 30 17 37" stroke="#333" strokeWidth="1.3" fill="none" />
-      {/* right seam line */}
-      <path d="M23 3 C27 10 27 30 23 37" stroke="#333" strokeWidth="1.3" fill="none" />
-      {/* stitches between seam lines */}
-      <line x1="17" y1="8"  x2="23" y2="8"  stroke="#333" strokeWidth="0.9" strokeLinecap="round" />
-      <line x1="16" y1="11" x2="24" y2="11" stroke="#333" strokeWidth="0.9" strokeLinecap="round" />
-      <line x1="16" y1="14" x2="24" y2="14" stroke="#333" strokeWidth="0.9" strokeLinecap="round" />
-      <line x1="16" y1="17" x2="24" y2="17" stroke="#333" strokeWidth="0.9" strokeLinecap="round" />
-      <line x1="16" y1="20" x2="24" y2="20" stroke="#333" strokeWidth="0.9" strokeLinecap="round" />
-      <line x1="16" y1="23" x2="24" y2="23" stroke="#333" strokeWidth="0.9" strokeLinecap="round" />
-      <line x1="16" y1="26" x2="24" y2="26" stroke="#333" strokeWidth="0.9" strokeLinecap="round" />
-      <line x1="16" y1="29" x2="24" y2="29" stroke="#333" strokeWidth="0.9" strokeLinecap="round" />
-      <line x1="17" y1="32" x2="23" y2="32" stroke="#333" strokeWidth="0.9" strokeLinecap="round" />
+      <circle cx="20" cy="20" r="18" fill="#EFEFEF" />
+      <ellipse cx="15" cy="13" rx="6" ry="5" fill="white" opacity="0.7" />
+      <ellipse cx="26" cy="27" rx="5" ry="4" fill="#BBBBBB" opacity="0.5" />
+      <path d="M17 3 C13 10 13 30 17 37" stroke="#444" strokeWidth="1.3" fill="none" />
+      <path d="M23 3 C27 10 27 30 23 37" stroke="#444" strokeWidth="1.3" fill="none" />
+      <line x1="17" y1="8"  x2="23" y2="8"  stroke="#444" strokeWidth="0.9" strokeLinecap="round" />
+      <line x1="16" y1="11" x2="24" y2="11" stroke="#444" strokeWidth="0.9" strokeLinecap="round" />
+      <line x1="16" y1="14" x2="24" y2="14" stroke="#444" strokeWidth="0.9" strokeLinecap="round" />
+      <line x1="16" y1="17" x2="24" y2="17" stroke="#444" strokeWidth="0.9" strokeLinecap="round" />
+      <line x1="16" y1="20" x2="24" y2="20" stroke="#444" strokeWidth="0.9" strokeLinecap="round" />
+      <line x1="16" y1="23" x2="24" y2="23" stroke="#444" strokeWidth="0.9" strokeLinecap="round" />
+      <line x1="16" y1="26" x2="24" y2="26" stroke="#444" strokeWidth="0.9" strokeLinecap="round" />
+      <line x1="16" y1="29" x2="24" y2="29" stroke="#444" strokeWidth="0.9" strokeLinecap="round" />
+      <line x1="17" y1="32" x2="23" y2="32" stroke="#444" strokeWidth="0.9" strokeLinecap="round" />
     </svg>
   )
 }
