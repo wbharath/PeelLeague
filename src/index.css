@@ -233,8 +233,10 @@ h1, h2, h3 { font-family: var(--display); text-transform: uppercase; letter-spac
 .champ-runner { font-size: 0.82rem; color: var(--muted); }
 
 /* Season Awards */
-.awards-grid { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 24px; margin-top: 8px; }
-.award-card { width: 220px; border-radius: var(--radius); overflow: hidden; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); transition: transform 0.2s; flex-shrink: 0; display: flex; flex-direction: column; }
+.awards-layout { display: flex; gap: 24px; align-items: flex-start; }
+.awards-featured-col { flex-shrink: 0; width: 220px; }
+.awards-rest-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; flex: 1; }
+.award-card { border-radius: var(--radius); overflow: hidden; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); transition: transform 0.2s; display: flex; flex-direction: column; }
 .award-card:hover { transform: translateY(-5px); }
 .award-img-wrap img { width: 100%; height: auto; display: block; object-position: center top; }
 .award-ribbon { background: var(--gold); color: var(--navy); font-family: var(--display); font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 10px 14px; text-align: center; }
@@ -264,6 +266,7 @@ h1, h2, h3 { font-family: var(--display); text-transform: uppercase; letter-spac
   .gallery { grid-template-columns: repeat(3, 1fr); }
   .sponsor-cards { grid-template-columns: repeat(2, 1fr); }
   .champ-grid { grid-template-columns: repeat(2, 1fr); }
+  .awards-rest-grid { grid-template-columns: repeat(2, 1fr); }
   .burger { display: flex; }
   .nav {
     position: fixed; top: 72px; left: 0; right: 0;
@@ -305,6 +308,9 @@ h1, h2, h3 { font-family: var(--display); text-transform: uppercase; letter-spac
   .chips button { font-size: 0.8rem; padding: 6px 14px; }
   .sponsor-cards { grid-template-columns: 1fr; }
   .champ-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .awards-layout { flex-direction: column; }
+  .awards-featured-col { width: 100%; }
+  .awards-rest-grid { grid-template-columns: repeat(2, 1fr); }
   .champ-img-wrap { height: 160px; }
   .form { padding: 20px 16px; }
   .form .row { grid-template-columns: 1fr; }

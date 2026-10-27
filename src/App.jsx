@@ -292,27 +292,38 @@ function awardIcon(award) {
   return '🏅'
 }
 
+function AwardCard({ a }) {
+  return (
+    <article className={`award-card${a.src ? ' award-card-photo' : ''}`}>
+      {a.src ? (
+        <div className="award-img-wrap">
+          <img src={a.src} alt={a.player} loading="lazy" />
+        </div>
+      ) : (
+        <div className="award-icon">{awardIcon(a.award)}</div>
+      )}
+      <div className="award-ribbon">{a.award}</div>
+      <span className="award-season">{a.season}</span>
+      <strong className="award-player">{a.player}</strong>
+      {a.team !== '—' && <span className="award-team">{a.team}</span>}
+    </article>
+  )
+}
+
 function SeasonAwards() {
+  const featured = awards.filter((a) => a.src)
+  const rest = awards.filter((a) => !a.src)
   return (
     <section className="section section-dark" id="awards">
       <div className="container">
         <SectionHead kicker="Individual Honours" title="Season Awards" />
-        <div className="awards-grid">
-          {awards.map((a) => (
-            <article key={`${a.season}-${a.award}`} className={`award-card${a.src ? ' award-card-photo' : ''}`}>
-              {a.src ? (
-                <div className="award-img-wrap">
-                  <img src={a.src} alt={a.player} loading="lazy" />
-                </div>
-              ) : (
-                <div className="award-icon">{awardIcon(a.award)}</div>
-              )}
-              <div className="award-ribbon">{a.award}</div>
-              <span className="award-season">{a.season}</span>
-              <strong className="award-player">{a.player}</strong>
-              {a.team !== '—' && <span className="award-team">{a.team}</span>}
-            </article>
-          ))}
+        <div className="awards-layout">
+          <div className="awards-featured-col">
+            {featured.map((a) => <AwardCard key={`${a.season}-${a.award}`} a={a} />)}
+          </div>
+          <div className="awards-rest-grid">
+            {rest.map((a) => <AwardCard key={`${a.season}-${a.award}`} a={a} />)}
+          </div>
         </div>
       </div>
     </section>
