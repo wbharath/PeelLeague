@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { league, stats, teams, fixtures, results, standings, gallery, sponsors, champions } from './data'
+import { league, stats, teams, fixtures, results, standings, gallery, sponsors, champions, awards } from './data'
 
 const teamBy = Object.fromEntries(teams.map((t) => [t.short, t]))
 const fmtDate = (d) =>
@@ -11,6 +11,7 @@ const NAV = [
   ['standings', 'Standings'],
   ['teams', 'Teams'],
   ['champions', 'Champions'],
+  ['awards', 'Awards'],
   ['gallery', 'Gallery'],
   ['contact', 'Contact'],
 ]
@@ -309,6 +310,31 @@ function HallOfChampions() {
   )
 }
 
+function SeasonAwards() {
+  return (
+    <section className="section section-dark" id="awards">
+      <div className="container">
+        <SectionHead kicker="Individual Honours" title="Season Awards" />
+        <div className="awards-grid">
+          {awards.map((a) => (
+            <article key={`${a.season}-${a.award}`} className="award-card">
+              <div className="award-img-wrap">
+                <img src={a.src} alt={a.player} loading="lazy" />
+                <div className="award-ribbon">{a.award}</div>
+              </div>
+              <div className="award-info">
+                <span className="award-season">{a.season}</span>
+                <strong className="award-player">{a.player}</strong>
+                {a.team !== '—' && <span className="award-team">{a.team}</span>}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function Gallery() {
   const cats = ['All', ...new Set(gallery.map((g) => g.category))]
   const [cat, setCat] = useState('All')
@@ -464,6 +490,7 @@ export default function App() {
         <Standings />
         <Teams />
         <HallOfChampions />
+        <SeasonAwards />
         <Gallery />
         <Sponsors />
         <Contact />

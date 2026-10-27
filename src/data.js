@@ -110,6 +110,16 @@ export const gallery = [
   { src: g('3'),   caption: 'PCL 2026 Weekday League — Awards & Recognitions',   category: 'Match Day' },
 ]
 
+export const awards = [
+  {
+    season: 'SPL Season 7 · 2026',
+    award: 'Best Batsman',
+    player: 'TBC',
+    team: '—',
+    src: '/gallery/30.jpeg',
+  },
+]
+
 export const champions = [
   // SPL Seasons
   { season: 'SPL Season 8', league: 'Super Peel League', champion: 'City View Royals',    runnerUp: 'Black Caps',          src: g('6') },
