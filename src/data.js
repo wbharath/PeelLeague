@@ -164,13 +164,13 @@ export const awards = [
 ]
 
 export const champions = [
+  // PCL Seasons
+  { season: 'PCL Season 2',    league: 'Peel Cricket League', champion: 'Swarajya CC',      runnerUp: 'Haryana Hurricanes', src: g('wa1') },
+  { season: 'PCL-1 Hard Ball', league: 'Peel Cricket League', champion: 'Telugu Titans',    runnerUp: 'Cosmic CC',          src: g('4') },
   // SPL Seasons
   { season: 'SPL Season 8',    league: 'Super Peel League',   champion: 'City View Royals', runnerUp: 'Black Caps CC',      src: g('6') },
   { season: 'SPL Season 7',    league: 'Super Peel League',   champion: 'Derry Cricket Club', runnerUp: '—',               src: g('8') },
   { season: 'SPL Season 4',    league: 'Super Peel League',   champion: 'Stallions CC',     runnerUp: '—',                  src: g('11') },
-  // PCL Seasons
-  { season: 'PCL Season 2',    league: 'Peel Cricket League', champion: 'Swarajya CC',      runnerUp: 'Haryana Hurricanes', src: g('wa1') },
-  { season: 'PCL-1 Hard Ball', league: 'Peel Cricket League', champion: 'Telugu Titans',    runnerUp: 'Cosmic CC',          src: g('4') },
 ]
 
 export const sponsors = [
