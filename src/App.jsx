@@ -6,28 +6,30 @@ const teamBy = Object.fromEntries(teams.map((t) => [t.short, t]))
 function CricketBall({ size = 18 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 40 40" fill="none" style={{ display: 'inline-block', verticalAlign: 'middle' }}>
-      {/* base ball */}
-      <circle cx="20" cy="20" r="18" fill="#CC1100" />
-      {/* highlight */}
-      <ellipse cx="14" cy="13" rx="5" ry="4" fill="#DD3322" opacity="0.6" />
-      {/* vertical seam line left */}
-      <path d="M15 4 C11 10 11 30 15 36" stroke="white" strokeWidth="1.4" fill="none" />
-      {/* vertical seam line right */}
-      <path d="M25 4 C29 10 29 30 25 36" stroke="white" strokeWidth="1.4" fill="none" />
-      {/* dashed stitches left seam */}
-      <line x1="13" y1="9"  x2="16" y2="9"  stroke="white" strokeWidth="1" strokeLinecap="round" />
-      <line x1="12" y1="13" x2="15" y2="13" stroke="white" strokeWidth="1" strokeLinecap="round" />
-      <line x1="12" y1="17" x2="15" y2="17" stroke="white" strokeWidth="1" strokeLinecap="round" />
-      <line x1="12" y1="21" x2="15" y2="21" stroke="white" strokeWidth="1" strokeLinecap="round" />
-      <line x1="12" y1="25" x2="15" y2="25" stroke="white" strokeWidth="1" strokeLinecap="round" />
-      <line x1="13" y1="29" x2="16" y2="29" stroke="white" strokeWidth="1" strokeLinecap="round" />
-      {/* dashed stitches right seam */}
-      <line x1="24" y1="9"  x2="27" y2="9"  stroke="white" strokeWidth="1" strokeLinecap="round" />
-      <line x1="25" y1="13" x2="28" y2="13" stroke="white" strokeWidth="1" strokeLinecap="round" />
-      <line x1="25" y1="17" x2="28" y2="17" stroke="white" strokeWidth="1" strokeLinecap="round" />
-      <line x1="25" y1="21" x2="28" y2="21" stroke="white" strokeWidth="1" strokeLinecap="round" />
-      <line x1="25" y1="25" x2="28" y2="25" stroke="white" strokeWidth="1" strokeLinecap="round" />
-      <line x1="24" y1="29" x2="27" y2="29" stroke="white" strokeWidth="1" strokeLinecap="round" />
+      {/* white ball base */}
+      <circle cx="20" cy="20" r="18" fill="#F0F0F0" />
+      {/* shadow shading on bottom-right */}
+      <circle cx="20" cy="20" r="18" fill="url(#ballShade)" />
+      <defs>
+        <radialGradient id="ballShade" cx="38%" cy="35%" r="65%">
+          <stop offset="0%" stopColor="white" stopOpacity="0.7" />
+          <stop offset="100%" stopColor="#888" stopOpacity="0.35" />
+        </radialGradient>
+      </defs>
+      {/* left seam line */}
+      <path d="M17 3 C13 10 13 30 17 37" stroke="#333" strokeWidth="1.3" fill="none" />
+      {/* right seam line */}
+      <path d="M23 3 C27 10 27 30 23 37" stroke="#333" strokeWidth="1.3" fill="none" />
+      {/* stitches between seam lines */}
+      <line x1="17" y1="8"  x2="23" y2="8"  stroke="#333" strokeWidth="0.9" strokeLinecap="round" />
+      <line x1="16" y1="11" x2="24" y2="11" stroke="#333" strokeWidth="0.9" strokeLinecap="round" />
+      <line x1="16" y1="14" x2="24" y2="14" stroke="#333" strokeWidth="0.9" strokeLinecap="round" />
+      <line x1="16" y1="17" x2="24" y2="17" stroke="#333" strokeWidth="0.9" strokeLinecap="round" />
+      <line x1="16" y1="20" x2="24" y2="20" stroke="#333" strokeWidth="0.9" strokeLinecap="round" />
+      <line x1="16" y1="23" x2="24" y2="23" stroke="#333" strokeWidth="0.9" strokeLinecap="round" />
+      <line x1="16" y1="26" x2="24" y2="26" stroke="#333" strokeWidth="0.9" strokeLinecap="round" />
+      <line x1="16" y1="29" x2="24" y2="29" stroke="#333" strokeWidth="0.9" strokeLinecap="round" />
+      <line x1="17" y1="32" x2="23" y2="32" stroke="#333" strokeWidth="0.9" strokeLinecap="round" />
     </svg>
   )
 }
