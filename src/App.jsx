@@ -313,6 +313,8 @@ function AwardCard({ a }) {
 function SeasonAwards() {
   const featured = awards.filter((a) => a.src)
   const rest = awards.filter((a) => !a.src)
+  const leftExtra = rest.slice(-3)
+  const rightCards = rest.slice(0, -3)
   return (
     <section className="section section-dark" id="awards">
       <div className="container">
@@ -320,9 +322,10 @@ function SeasonAwards() {
         <div className="awards-layout">
           <div className="awards-featured-col">
             {featured.map((a) => <AwardCard key={`${a.season}-${a.award}`} a={a} />)}
+            {leftExtra.map((a) => <AwardCard key={`${a.season}-${a.award}`} a={a} />)}
           </div>
           <div className="awards-rest-grid">
-            {rest.map((a) => <AwardCard key={`${a.season}-${a.award}`} a={a} />)}
+            {rightCards.map((a) => <AwardCard key={`${a.season}-${a.award}`} a={a} />)}
           </div>
         </div>
       </div>

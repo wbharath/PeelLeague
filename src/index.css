@@ -234,7 +234,7 @@ h1, h2, h3 { font-family: var(--display); text-transform: uppercase; letter-spac
 
 /* Season Awards */
 .awards-layout { display: flex; gap: 24px; align-items: flex-start; }
-.awards-featured-col { flex-shrink: 0; width: 220px; }
+.awards-featured-col { flex-shrink: 0; width: 220px; display: flex; flex-direction: column; gap: 20px; }
 .awards-rest-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; flex: 1; }
 .award-card { border-radius: var(--radius); overflow: hidden; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); transition: transform 0.2s; display: flex; flex-direction: column; }
 .award-card:hover { transform: translateY(-5px); }
