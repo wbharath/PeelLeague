@@ -1,11 +1,12 @@
 export const league = {
   name: 'Super Peel League',
   short: 'SPL',
-  tagline: 'The premier cricket league of Peel Region, Ontario',
+  tagline: 'The premier cricket league of Peel Region, Greater Toronto Area, Ontario',
   season: '2027',
-  seasonStart: '2027-05-15T10:00:00-04:00',
-  email: 'info@superpeelleague.ca',
-  phone: '+1 (905) 555-0142',
+  seasonStart: '2027-05-03T10:00:00-04:00',
+  seasonOpening: 'May 3rd, 2027',
+  email: 'stallionscricclub@gmail.com',
+  phones: ['+1 (647) 572-1976', '+1 (647) 936-8940', '+1 (647) 609-8341'],
   location: 'Brampton · Mississauga · GTA',
   registerUrl: '#contact',
   socials: {
@@ -16,10 +17,10 @@ export const league = {
 }
 
 export const stats = [
-  { value: '14+', label: 'Teams' },
-  { value: '150+', label: 'Players' },
-  { value: '60+', label: 'Matches / Season' },
-  { value: '5', label: 'Grounds' },
+  { value: '70+',   label: 'Teams' },
+  { value: '1050+', label: 'Players' },
+  { value: '150+',  label: 'Matches / Season' },
+  { value: '10+',   label: 'Grounds' },
 ]
 
 // All Peel Region clubs — SPL and PCL combined
@@ -170,13 +171,12 @@ export const awards = [
 ]
 
 export const champions = [
-  // PCL Seasons
-  { season: 'PCL Season 2',    league: 'Peel Cricket League', champion: 'Swarajya CC',      runnerUp: 'Haryana Hurricanes', src: g('wa1') },
-  { season: 'PCL-1 Hard Ball', league: 'Peel Cricket League', champion: 'Telugu Titans',    runnerUp: 'Cosmic CC',          src: g('4') },
-  // SPL Seasons
-  { season: 'SPL Season 8',    league: 'Super Peel League',   champion: 'City View Royals', runnerUp: 'Black Caps CC',      src: g('6') },
-  { season: 'SPL Season 7',    league: 'Super Peel League',   champion: 'Derry Cricket Club', runnerUp: '—',               src: g('8') },
-  { season: 'SPL Season 4',    league: 'Super Peel League',   champion: 'Stallions CC',     runnerUp: '—',                  src: g('11') },
+  // PCL Seasons (Hard Ball)
+  { season: 'PCL Season 2 · Hard Ball', league: 'Peel Cricket League', champion: 'Swarajya CC',      runnerUp: 'Haryana Hurricanes', src: g('wa1') },
+  { season: 'PCL Season 1 · Hard Ball', league: 'Peel Cricket League', champion: 'Telugu Titans',    runnerUp: 'Cosmic CC',          src: g('4') },
+  // SPL Seasons (Tennis Ball)
+  { season: 'SPL Season 8 · Tennis Ball', league: 'Super Peel League', champion: 'City View Royals', runnerUp: 'Black Caps CC',      src: g('6') },
+  { season: 'SPL Season 7 · Tennis Ball', league: 'Super Peel League', champion: 'Derry Cricket Club', runnerUp: '—',               src: g('8') },
 ]
 
 export const sponsors = [

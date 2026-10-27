@@ -84,7 +84,7 @@ function Hero() {
       <div className="hero-bg" />
       <div className="container hero-inner">
         <div className="hero-copy">
-          <span className="eyebrow">Season {league.season} · Coming Soon</span>
+          <span className="eyebrow">Season {league.season} · Opens {league.seasonOpening}</span>
           <h1>Super <span className="gold">Peel</span> League</h1>
           <div className="league-tags">
             <span className="league-tag">PCL</span>
@@ -106,12 +106,12 @@ function Hero() {
               </div>
             ))}
           </div>
-          <div className="hero-card-label">{champions[0].season} Champions</div>
+          <div className="hero-card-label">Opening Day</div>
           <div className="champ-hero">
-            <span>🏆</span>
+            <span>📅</span>
             <div>
-              <strong>{champions[0].champion}</strong>
-              {champions[0].runnerUp !== '—' && <small>Runners-Up: {champions[0].runnerUp}</small>}
+              <strong>{league.seasonOpening}</strong>
+              <small>🏏 PCL Hard Ball &nbsp;·&nbsp; 🎾 SPL Tennis Ball</small>
             </div>
           </div>
         </div>
@@ -140,7 +140,7 @@ function SectionHead({ kicker, title, children }) {
 }
 
 function About() {
-  const pclChamp = champions.find((c) => c.season === 'PCL Season 2')
+  const pclChamp = champions.find((c) => c.season.includes('PCL Season 2'))
   return (
     <section className="section" id="about">
       <div className="container about">
@@ -178,8 +178,8 @@ function About() {
 
 
 const STANDING_TABLES = [
-  { id: 'pcl2', label: 'PCL Season 2', kicker: 'Peel Cricket League', data: standingsPCL2 },
-  { id: 'spl8', label: 'SPL Season 8', kicker: 'Super Peel League',   data: standings },
+  { id: 'pcl2', label: 'PCL Season 2', kicker: '🏏 Peel Cricket League — Hard Ball', data: standingsPCL2 },
+  { id: 'spl8', label: 'SPL Season 8', kicker: '🎾 Super Peel League — Tennis Ball', data: standings },
 ]
 
 function Standings() {
@@ -257,7 +257,7 @@ function HallOfChampions() {
           A record of every champion and runner-up across all SPL and PCL seasons.
         </SectionHead>
         <div className="champ-leagues">
-          {[['Peel Cricket League (PCL)', pcl], ['Super Peel League', spl]].map(([leagueName, rows]) => (
+          {[['🏏 Peel Cricket League (PCL) — Hard Ball', pcl], ['🎾 Super Peel League (SPL) — Tennis Ball', spl]].map(([leagueName, rows]) => (
             <div key={leagueName} className="champ-league-block">
               <h3 className="champ-league-title">{leagueName}</h3>
               <div className="champ-grid">
@@ -312,20 +312,29 @@ function AwardCard({ a }) {
 
 function SeasonAwards() {
   const featured = awards.filter((a) => a.src)
-  const rest = awards.filter((a) => !a.src)
-  const leftExtra = rest.slice(-3)
-  const rightCards = rest.slice(0, -3)
+  const pclAwards = awards.filter((a) => !a.src && a.season.startsWith('PCL'))
+  const splAwards = awards.filter((a) => !a.src && a.season.startsWith('SPL'))
   return (
     <section className="section section-dark" id="awards">
       <div className="container">
         <SectionHead kicker="Individual Honours" title="Season Awards" />
+        {/* Top row: Addy + PCL Awards side by side */}
         <div className="awards-layout">
           <div className="awards-featured-col">
             {featured.map((a) => <AwardCard key={`${a.season}-${a.award}`} a={a} />)}
-            {leftExtra.map((a) => <AwardCard key={`${a.season}-${a.award}`} a={a} />)}
           </div>
-          <div className="awards-rest-grid">
-            {rightCards.map((a) => <AwardCard key={`${a.season}-${a.award}`} a={a} />)}
+          <div className="awards-group">
+            <h3 className="awards-group-title">🏏 PCL Awards — Hard Ball</h3>
+            <div className="awards-rest-grid">
+              {pclAwards.map((a) => <AwardCard key={`${a.season}-${a.award}`} a={a} />)}
+            </div>
+          </div>
+        </div>
+        {/* SPL Awards full width below */}
+        <div className="awards-spl-section">
+          <h3 className="awards-group-title">🎾 SPL Awards — Tennis Ball</h3>
+          <div className="awards-spl-grid">
+            {splAwards.map((a) => <AwardCard key={`${a.season}-${a.award}`} a={a} />)}
           </div>
         </div>
       </div>
@@ -433,7 +442,9 @@ function Contact() {
           <p>Registrations for Season {league.season} are open. Whether you want to enter a team, join as a player, or partner with the league — we'd love to hear from you.</p>
           <ul className="contact-list">
             <li><span>✉</span><a href={`mailto:${league.email}`}>{league.email}</a></li>
-            <li><span>☎</span><a href={`tel:${league.phone.replace(/[^\d+]/g, '')}`}>{league.phone}</a></li>
+            {league.phones.map((p) => (
+              <li key={p}><span>☎</span><a href={`tel:${p.replace(/[^\d+]/g, '')}`}>{p}</a></li>
+            ))}
             <li><span>📍</span>{league.location}, Ontario</li>
           </ul>
         </div>
