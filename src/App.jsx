@@ -84,7 +84,6 @@ function useCountdown(target) {
 
 function Hero() {
   const c = useCountdown(league.seasonStart)
-  const next = fixtures[0]
   return (
     <section className="hero" id="top">
       <div className="hero-bg" />
@@ -94,9 +93,9 @@ function Hero() {
           <h1>
             Super <span className="gold">Peel</span> League
           </h1>
-          <p className="lead">{league.tagline}. Eight franchises. One trophy. Every weekend, all summer long.</p>
+          <p className="lead">{league.tagline}. Multiple teams. One trophy. Every weekend, all summer long.</p>
           <div className="hero-actions">
-            <a href="#fixtures" className="btn btn-gold">View Fixtures</a>
+            <a href="#standings" className="btn btn-gold">View Standings</a>
             <a href={league.registerUrl} className="btn btn-ghost">Register a Team</a>
           </div>
         </div>
@@ -110,13 +109,14 @@ function Hero() {
               </div>
             ))}
           </div>
-          <div className="hero-card-label">Opening match</div>
-          <div className="vs">
-            <div><TeamBadge code={next.home} size="lg" /><span>{teamBy[next.home].name}</span></div>
-            <em>VS</em>
-            <div><TeamBadge code={next.away} size="lg" /><span>{teamBy[next.away].name}</span></div>
+          <div className="hero-card-label">{champions[0].season} Champions</div>
+          <div className="champ-hero">
+            <span>🏆</span>
+            <div>
+              <strong>{champions[0].champion}</strong>
+              {champions[0].runnerUp !== '—' && <small>Runners-Up: {champions[0].runnerUp}</small>}
+            </div>
           </div>
-          <div className="vs-meta">{fmtDate(next.date)} · {next.time} · {next.ground}</div>
         </div>
       </div>
       <div className="ticker">
@@ -143,7 +143,6 @@ function SectionHead({ kicker, title, children }) {
 }
 
 function About() {
-  const champ = teamBy[results[0].home]
   return (
     <section className="section" id="about">
       <div className="container about">
@@ -161,8 +160,8 @@ function About() {
           <div className="champ">
             <span className="trophy">🏆</span>
             <div>
-              <small>2026 Champions</small>
-              <strong>{champ.name}</strong>
+              <small>SPL Season 8 Champions</small>
+              <strong>{champions[0].champion}</strong>
             </div>
           </div>
         </div>
@@ -185,7 +184,7 @@ function Standings() {
   return (
     <section className="section" id="standings">
       <div className="container">
-        <SectionHead kicker="Season 2026" title="Points Table">Top four qualify for the semi-finals. Win = 2 pts, No result = 1 pt.</SectionHead>
+        <SectionHead kicker="SPL Season 8" title="Points Table">Top four qualify for the semi-finals. Win = 2 pts, No result = 1 pt.</SectionHead>
         <div className="table-wrap">
           <table className="table">
             <thead>
@@ -213,14 +212,12 @@ function Teams() {
   return (
     <section className="section section-dark" id="teams">
       <div className="container">
-        <SectionHead kicker="The franchises" title="Meet the Teams" />
+        <SectionHead kicker="Peel Region Cricket" title="League Teams" />
         <div className="team-grid">
           {teams.map((t) => (
             <article key={t.short} className="team-card" style={{ '--team': t.color }}>
               <div className="team-crest">{t.short}</div>
               <h3>{t.name}</h3>
-              <p>{t.city}</p>
-              <small>Captain · {t.captain}</small>
             </article>
           ))}
         </div>
@@ -267,6 +264,13 @@ function HallOfChampions() {
   )
 }
 
+function awardIcon(award) {
+  if (award.includes('Batter') || award.includes('Batsman')) return '🏏'
+  if (award.includes('Bowler')) return '⚡'
+  if (award.includes('Fielder')) return '🧤'
+  return '🏅'
+}
+
 function SeasonAwards() {
   return (
     <section className="section section-dark" id="awards">
@@ -275,10 +279,8 @@ function SeasonAwards() {
         <div className="awards-grid">
           {awards.map((a) => (
             <article key={`${a.season}-${a.award}`} className="award-card">
-              <div className="award-img-wrap">
-                <img src={a.src} alt={a.player} loading="lazy" />
-              </div>
               <div className="award-ribbon">{a.award}</div>
+              <div className="award-icon">{awardIcon(a.award)}</div>
               <span className="award-season">{a.season}</span>
               <strong className="award-player">{a.player}</strong>
               {a.team !== '—' && <span className="award-team">{a.team}</span>}
