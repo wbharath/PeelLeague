@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { league, stats, teams, fixtures, results, standings, gallery, sponsors, champions, awards } from './data'
+import { league, stats, teams, results, standings, gallery, sponsors, champions, awards } from './data'
 
 const teamBy = Object.fromEntries(teams.map((t) => [t.short, t]))
 const fmtDate = (d) =>
@@ -7,7 +7,6 @@ const fmtDate = (d) =>
 
 const NAV = [
   ['about', 'About'],
-  ['fixtures', 'Fixtures'],
   ['standings', 'Standings'],
   ['teams', 'Teams'],
   ['champions', 'Champions'],
@@ -180,48 +179,6 @@ function About() {
   )
 }
 
-function Fixtures() {
-  const [tab, setTab] = useState('upcoming')
-  return (
-    <section className="section section-alt" id="fixtures">
-      <div className="container">
-        <SectionHead kicker="Match centre" title="Fixtures & Results" />
-        <div className="tabs">
-          <button className={tab === 'upcoming' ? 'active' : ''} onClick={() => setTab('upcoming')}>Upcoming</button>
-          <button className={tab === 'results' ? 'active' : ''} onClick={() => setTab('results')}>Results</button>
-        </div>
-        <div className="match-grid">
-          {tab === 'upcoming'
-            ? fixtures.map((f, i) => (
-                <article key={i} className="match">
-                  <div className="match-top">
-                    <span>{fmtDate(f.date)}</span>
-                    <span>{f.time}</span>
-                  </div>
-                  <div className="match-teams">
-                    <div><TeamBadge code={f.home} /><span>{teamBy[f.home].name}</span></div>
-                    <em>vs</em>
-                    <div><TeamBadge code={f.away} /><span>{teamBy[f.away].name}</span></div>
-                  </div>
-                  <div className="match-foot">📍 {f.ground}</div>
-                </article>
-              ))
-            : results.map((r, i) => (
-                <article key={i} className="match">
-                  <div className="match-top">
-                    <span className="stage">{r.stage}</span>
-                    <span>{fmtDate(r.date)}</span>
-                  </div>
-                  <div className="score-row"><TeamBadge code={r.home} /><span>{teamBy[r.home].name}</span><b>{r.homeScore}</b></div>
-                  <div className="score-row"><TeamBadge code={r.away} /><span>{teamBy[r.away].name}</span><b>{r.awayScore}</b></div>
-                  <div className="match-foot result">{r.result}</div>
-                </article>
-              ))}
-        </div>
-      </div>
-    </section>
-  )
-}
 
 function Standings() {
   const rows = [...standings].sort((a, b) => b.w * 2 + b.nr - (a.w * 2 + a.nr) || parseFloat(b.nrr) - parseFloat(a.nrr))
@@ -484,7 +441,6 @@ export default function App() {
       <main>
         <Hero />
         <About />
-        <Fixtures />
         <Standings />
         <Teams />
         <HallOfChampions />
