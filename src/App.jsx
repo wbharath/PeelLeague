@@ -5,10 +5,29 @@ const teamBy = Object.fromEntries(teams.map((t) => [t.short, t]))
 
 function CricketBall({ size = 18 }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 20 20" fill="none" style={{ display: 'inline-block', verticalAlign: 'middle' }}>
-      <circle cx="10" cy="10" r="9" fill="#CC2200" />
-      <path d="M5 5.5 Q10 8.5 15 5.5" stroke="white" strokeWidth="1" fill="none" strokeLinecap="round" />
-      <path d="M5 14.5 Q10 11.5 15 14.5" stroke="white" strokeWidth="1" fill="none" strokeLinecap="round" />
+    <svg width={size} height={size} viewBox="0 0 40 40" fill="none" style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+      {/* base ball */}
+      <circle cx="20" cy="20" r="18" fill="#CC1100" />
+      {/* highlight */}
+      <ellipse cx="14" cy="13" rx="5" ry="4" fill="#DD3322" opacity="0.6" />
+      {/* vertical seam line left */}
+      <path d="M15 4 C11 10 11 30 15 36" stroke="white" strokeWidth="1.4" fill="none" />
+      {/* vertical seam line right */}
+      <path d="M25 4 C29 10 29 30 25 36" stroke="white" strokeWidth="1.4" fill="none" />
+      {/* dashed stitches left seam */}
+      <line x1="13" y1="9"  x2="16" y2="9"  stroke="white" strokeWidth="1" strokeLinecap="round" />
+      <line x1="12" y1="13" x2="15" y2="13" stroke="white" strokeWidth="1" strokeLinecap="round" />
+      <line x1="12" y1="17" x2="15" y2="17" stroke="white" strokeWidth="1" strokeLinecap="round" />
+      <line x1="12" y1="21" x2="15" y2="21" stroke="white" strokeWidth="1" strokeLinecap="round" />
+      <line x1="12" y1="25" x2="15" y2="25" stroke="white" strokeWidth="1" strokeLinecap="round" />
+      <line x1="13" y1="29" x2="16" y2="29" stroke="white" strokeWidth="1" strokeLinecap="round" />
+      {/* dashed stitches right seam */}
+      <line x1="24" y1="9"  x2="27" y2="9"  stroke="white" strokeWidth="1" strokeLinecap="round" />
+      <line x1="25" y1="13" x2="28" y2="13" stroke="white" strokeWidth="1" strokeLinecap="round" />
+      <line x1="25" y1="17" x2="28" y2="17" stroke="white" strokeWidth="1" strokeLinecap="round" />
+      <line x1="25" y1="21" x2="28" y2="21" stroke="white" strokeWidth="1" strokeLinecap="round" />
+      <line x1="25" y1="25" x2="28" y2="25" stroke="white" strokeWidth="1" strokeLinecap="round" />
+      <line x1="24" y1="29" x2="27" y2="29" stroke="white" strokeWidth="1" strokeLinecap="round" />
     </svg>
   )
 }
@@ -105,10 +124,9 @@ function Hero() {
       <div className="container hero-inner">
         <div className="hero-copy">
           <span className="eyebrow">Season {league.season} · Opens {league.seasonOpening}</span>
-          <h1>Super <span className="gold">Peel</span> League</h1>
           <div className="league-tags">
-            <span className="league-tag">PCL</span>
-            <span className="league-tag">SPL</span>
+            <span className="league-tag"><CricketBall size={14} /> PCL</span>
+            <span className="league-tag"><TennisBall size={14} /> SPL</span>
           </div>
           <p className="lead">{league.tagline}. Multiple Teams. One Goal. All summer long.</p>
           <div className="hero-actions">
