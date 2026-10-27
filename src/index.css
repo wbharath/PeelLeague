@@ -108,10 +108,11 @@ h1, h2, h3 { font-family: var(--display); text-transform: uppercase; letter-spac
 /* About */
 .about { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: center; }
 .about p { color: var(--muted); margin-bottom: 16px; font-size: 1.05rem; }
-.champ { display: inline-flex; align-items: center; gap: 16px; margin-top: 14px; padding: 16px 22px; border-radius: var(--radius); background: var(--navy); color: #fff; }
-.champ .trophy { font-size: 2rem; }
-.champ small { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--gold); font-weight: 700; }
-.champ strong { font-family: var(--display); font-size: 1.4rem; text-transform: uppercase; }
+.about-champs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px; }
+.about-champ-chip { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: var(--radius); background: var(--navy); color: #fff; }
+.about-champ-ball { flex-shrink: 0; line-height: 0; }
+.about-champ-chip small { display: block; font-size: 0.67rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold); font-weight: 700; margin-bottom: 3px; }
+.about-champ-chip strong { display: block; font-family: var(--display); font-size: 1rem; text-transform: uppercase; }
 .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .stat { padding: 30px 24px; border-radius: var(--radius); background: var(--bg-alt); border-left: 5px solid var(--gold); }
 .stat:nth-child(2), .stat:nth-child(3) { background: var(--navy); color: #fff; }

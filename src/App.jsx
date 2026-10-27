@@ -3,6 +3,26 @@ import { league, stats, teams, results, standings, standingsPCL2, gallery, spons
 
 const teamBy = Object.fromEntries(teams.map((t) => [t.short, t]))
 
+function CricketBall({ size = 18 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 20 20" fill="none" style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+      <circle cx="10" cy="10" r="9" fill="#CC2200" />
+      <path d="M5 5.5 Q10 8.5 15 5.5" stroke="white" strokeWidth="1" fill="none" strokeLinecap="round" />
+      <path d="M5 14.5 Q10 11.5 15 14.5" stroke="white" strokeWidth="1" fill="none" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+function TennisBall({ size = 18 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 20 20" fill="none" style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+      <circle cx="10" cy="10" r="9" fill="#5BBF00" />
+      <path d="M4 6.5 Q10 10 4 13.5" stroke="white" strokeWidth="1.1" fill="none" strokeLinecap="round" />
+      <path d="M16 6.5 Q10 10 16 13.5" stroke="white" strokeWidth="1.1" fill="none" strokeLinecap="round" />
+    </svg>
+  )
+}
+
 const NAV = [
   ['about', 'About'],
   ['standings', 'Standings'],
@@ -111,7 +131,7 @@ function Hero() {
             <span>📅</span>
             <div>
               <strong>{league.seasonOpening}</strong>
-              <small>🏏 PCL Hard Ball &nbsp;·&nbsp; 🎾 SPL Tennis Ball</small>
+              <small><CricketBall size={14} /> PCL Hard Ball &nbsp;·&nbsp; <TennisBall size={14} /> SPL Tennis Ball</small>
             </div>
           </div>
         </div>
@@ -140,7 +160,6 @@ function SectionHead({ kicker, title, children }) {
 }
 
 function About() {
-  const pclChamp = champions.find((c) => c.season.includes('PCL Season 2'))
   return (
     <section className="section" id="about">
       <div className="container about">
@@ -155,12 +174,18 @@ function About() {
             Matches run every weekday from May to September, wrapping up with semi-finals and a Finals Day under the
             lights.
           </p>
-          <div className="champ">
-            <span className="trophy">🏆</span>
-            <div>
-              <small>PCL Season 2 Champions</small>
-              <strong>{pclChamp.champion}</strong>
-            </div>
+          <div className="about-champs">
+            {champions.map((c) => (
+              <div key={c.season} className="about-champ-chip">
+                <span className="about-champ-ball">
+                  {c.league === 'Peel Cricket League' ? <CricketBall size={16} /> : <TennisBall size={16} />}
+                </span>
+                <div>
+                  <small>{c.season}</small>
+                  <strong>🏆 {c.champion}</strong>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
         <div className="stats">
@@ -178,8 +203,8 @@ function About() {
 
 
 const STANDING_TABLES = [
-  { id: 'pcl2', label: 'PCL Season 2', kicker: '🏏 Peel Cricket League — Hard Ball', data: standingsPCL2 },
-  { id: 'spl8', label: 'SPL Season 8', kicker: '🎾 Super Peel League — Tennis Ball', data: standings },
+  { id: 'pcl2', label: 'PCL Season 2', kicker: <><CricketBall size={13} />{' '}Peel Cricket League — Hard Ball</>, data: standingsPCL2 },
+  { id: 'spl8', label: 'SPL Season 8', kicker: <><TennisBall size={13} />{' '}Super Peel League — Tennis Ball</>, data: standings },
 ]
 
 function Standings() {
@@ -257,9 +282,12 @@ function HallOfChampions() {
           A record of every champion and runner-up across all SPL and PCL seasons.
         </SectionHead>
         <div className="champ-leagues">
-          {[['🏏 Peel Cricket League (PCL) — Hard Ball', pcl], ['🎾 Super Peel League (SPL) — Tennis Ball', spl]].map(([leagueName, rows]) => (
-            <div key={leagueName} className="champ-league-block">
-              <h3 className="champ-league-title">{leagueName}</h3>
+          {[
+            { key: 'pcl', title: <><CricketBall size={16} /> Peel Cricket League (PCL) — Hard Ball</>, rows: pcl },
+            { key: 'spl', title: <><TennisBall size={16} /> Super Peel League (SPL) — Tennis Ball</>, rows: spl },
+          ].map(({ key, title, rows }) => (
+            <div key={key} className="champ-league-block">
+              <h3 className="champ-league-title">{title}</h3>
               <div className="champ-grid">
                 {rows.map((c) => (
                   <article key={c.season} className="champ-card">
@@ -324,7 +352,7 @@ function SeasonAwards() {
             {featured.map((a) => <AwardCard key={`${a.season}-${a.award}`} a={a} />)}
           </div>
           <div className="awards-group">
-            <h3 className="awards-group-title">🏏 PCL Awards — Hard Ball</h3>
+            <h3 className="awards-group-title"><CricketBall size={15} /> PCL Awards — Hard Ball</h3>
             <div className="awards-rest-grid">
               {pclAwards.map((a) => <AwardCard key={`${a.season}-${a.award}`} a={a} />)}
             </div>
@@ -332,7 +360,7 @@ function SeasonAwards() {
         </div>
         {/* SPL Awards full width below */}
         <div className="awards-spl-section">
-          <h3 className="awards-group-title">🎾 SPL Awards — Tennis Ball</h3>
+          <h3 className="awards-group-title"><TennisBall size={15} /> SPL Awards — Tennis Ball</h3>
           <div className="awards-spl-grid">
             {splAwards.map((a) => <AwardCard key={`${a.season}-${a.award}`} a={a} />)}
           </div>
