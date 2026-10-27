@@ -17,7 +17,7 @@ const NAV = [
 
 function Logo({ size = 44 }) {
   return (
-    <img src="/logo.jpeg" alt="Super Peel League" width={size} height={size} style={{ objectFit: 'cover', borderRadius: '50%' }} />
+    <img src="/logo.png" alt="Super Peel League" width={size} height={size} style={{ objectFit: 'contain' }} />
   )
 }
 
