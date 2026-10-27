@@ -2,8 +2,6 @@ import { useEffect, useMemo, useState } from 'react'
 import { league, stats, teams, results, standings, standingsPCL2, gallery, sponsors, champions, awards } from './data'
 
 const teamBy = Object.fromEntries(teams.map((t) => [t.short, t]))
-const fmtDate = (d) =>
-  new Date(d + 'T12:00:00').toLocaleDateString('en-CA', { weekday: 'short', month: 'short', day: 'numeric' })
 
 const NAV = [
   ['about', 'About'],
@@ -92,7 +90,7 @@ function Hero() {
             <span className="league-tag">PCL</span>
             <span className="league-tag">SPL</span>
           </div>
-          <p className="lead">{league.tagline}. Multiple teams. One trophy. All summer long.</p>
+          <p className="lead">{league.tagline}. Multiple Teams. One Goal. All summer long.</p>
           <div className="hero-actions">
             <a href="#standings" className="btn btn-gold">View Standings</a>
             <a href={league.registerUrl} className="btn btn-ghost">Register a Team</a>
