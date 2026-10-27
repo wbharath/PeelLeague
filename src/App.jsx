@@ -320,13 +320,11 @@ function SeasonAwards() {
             <article key={`${a.season}-${a.award}`} className="award-card">
               <div className="award-img-wrap">
                 <img src={a.src} alt={a.player} loading="lazy" />
-                <div className="award-ribbon">{a.award}</div>
               </div>
-              <div className="award-info">
-                <span className="award-season">{a.season}</span>
-                <strong className="award-player">{a.player}</strong>
-                {a.team !== '—' && <span className="award-team">{a.team}</span>}
-              </div>
+              <div className="award-ribbon">{a.award}</div>
+              <span className="award-season">{a.season}</span>
+              <strong className="award-player">{a.player}</strong>
+              {a.team !== '—' && <span className="award-team">{a.team}</span>}
             </article>
           ))}
         </div>
