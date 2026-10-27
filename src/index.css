@@ -233,7 +233,7 @@ h1, h2, h3 { font-family: var(--display); text-transform: uppercase; letter-spac
 .champ-runner { font-size: 0.82rem; color: var(--muted); }
 
 /* Season Awards */
-.awards-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin-top: 8px; }
+.awards-grid { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 24px; margin-top: 8px; }
 .award-card { width: 220px; border-radius: var(--radius); overflow: hidden; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); transition: transform 0.2s; flex-shrink: 0; display: flex; flex-direction: column; }
 .award-card:hover { transform: translateY(-5px); }
 .award-img-wrap img { width: 100%; height: auto; display: block; object-position: center top; }
