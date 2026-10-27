@@ -143,24 +143,30 @@ export const gallery = [
 
 // Season award winners — PCL first, then SPL
 export const awards = [
+  // Special standalone award (with photo)
+  { season: 'League Award',         award: 'Best Batsman of the League', player: 'Addy',               team: '—',                    src: '/gallery/30.jpeg' },
   // PCL Season 2 (2026)
-  { season: 'PCL Season 2 · 2026', award: 'Player of the Tournament', player: 'Ishan Khanna',       team: 'WI Sports Brampton' },
-  { season: 'PCL Season 2 · 2026', award: 'Best Batter',              player: 'Gurpreet Singh',     team: 'Haryana Hurricanes' },
-  { season: 'PCL Season 2 · 2026', award: 'Best Bowler',              player: 'Akhil Kumar',        team: 'WI Sports Brampton' },
-  { season: 'PCL Season 2 · 2026', award: 'Best Fielder',             player: 'Mohdeep Singh',      team: 'WI Sports Brampton' },
+  { season: 'PCL Season 2 · 2026', award: 'Player of the Tournament',   player: 'Ishan Khanna',       team: 'WI Sports Brampton' },
+  { season: 'PCL Season 2 · 2026', award: 'Best Batter',                player: 'Gurpreet Singh',     team: 'Haryana Hurricanes' },
+  { season: 'PCL Season 2 · 2026', award: 'Best Bowler',                player: 'Akhil Kumar',        team: 'WI Sports Brampton' },
+  { season: 'PCL Season 2 · 2026', award: 'Best Fielder',               player: 'Mohdeep Singh',      team: 'WI Sports Brampton' },
   // PCL 2025
-  { season: 'PCL 2025',            award: 'Best Batsman',             player: 'Addy',               team: '—' },
-  { season: 'PCL 2025',            award: 'Best Bowler',              player: 'Deepan Chennimalai', team: 'KNIGHT Watchmen' },
+  { season: 'PCL 2025',            award: 'Orange Cap (Most Runs)',     player: 'Rohan Patel',        team: 'Supernovas CC' },
+  { season: 'PCL 2025',            award: 'Purple Cap (Most Wickets)',  player: 'Deepan Chennimalai', team: 'KNIGHT Watchmen' },
+  { season: 'PCL 2025',            award: 'Most 4s in Tournament',      player: 'Rohan Patel',        team: 'Supernovas CC' },
+  { season: 'PCL 2025',            award: 'Most 6s in Tournament',      player: 'Rohan Patel',        team: 'Supernovas CC' },
+  { season: 'PCL 2025',            award: 'Most Catches',               player: 'Snehal Thakur',      team: 'Supernovas CC' },
+  { season: 'PCL 2025',            award: 'Most Dots Bowled',           player: 'Tapan',              team: 'Supernovas CC' },
   // SPL Season 8 (2026)
-  { season: 'SPL Season 8 · 2026', award: 'Player of the Tournament', player: 'Gaggi Mand',         team: 'Black Caps CC' },
-  { season: 'SPL Season 8 · 2026', award: 'Best Batter',              player: 'Gaggi Mand',         team: 'Black Caps CC' },
-  { season: 'SPL Season 8 · 2026', award: 'Best Bowler',              player: 'Raviraj Shelke',     team: 'Mississauga Royals' },
-  { season: 'SPL Season 8 · 2026', award: 'Best Fielder',             player: 'Jashandeep Singh',   team: 'Black Caps CC' },
+  { season: 'SPL Season 8 · 2026', award: 'Player of the Tournament',   player: 'Gaggi Mand',         team: 'Black Caps CC' },
+  { season: 'SPL Season 8 · 2026', award: 'Best Batter',                player: 'Gaggi Mand',         team: 'Black Caps CC' },
+  { season: 'SPL Season 8 · 2026', award: 'Best Bowler',                player: 'Raviraj Shelke',     team: 'Mississauga Royals' },
+  { season: 'SPL Season 8 · 2026', award: 'Best Fielder',               player: 'Jashandeep Singh',   team: 'Black Caps CC' },
   // SPL Season 7 (2026)
-  { season: 'SPL Season 7 · 2026', award: 'Player of the Tournament', player: 'Pathik Tadvi',       team: 'Rising Knights' },
-  { season: 'SPL Season 7 · 2026', award: 'Best Batter',              player: 'Pathik Tadvi',       team: 'Rising Knights' },
-  { season: 'SPL Season 7 · 2026', award: 'Best Bowler',              player: 'Abdul',              team: 'Derry Cricket Club' },
-  { season: 'SPL Season 7 · 2026', award: 'Best Fielder',             player: 'Vamsi Vasireddy',    team: 'Derry Cricket Club' },
+  { season: 'SPL Season 7 · 2026', award: 'Player of the Tournament',   player: 'Pathik Tadvi',       team: 'Rising Knights' },
+  { season: 'SPL Season 7 · 2026', award: 'Best Batter',                player: 'Pathik Tadvi',       team: 'Rising Knights' },
+  { season: 'SPL Season 7 · 2026', award: 'Best Bowler',                player: 'Abdul',              team: 'Derry Cricket Club' },
+  { season: 'SPL Season 7 · 2026', award: 'Best Fielder',               player: 'Vamsi Vasireddy',    team: 'Derry Cricket Club' },
 ]
 
 export const champions = [

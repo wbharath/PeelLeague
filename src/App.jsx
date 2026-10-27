@@ -257,7 +257,7 @@ function HallOfChampions() {
           A record of every champion and runner-up across all SPL and PCL seasons.
         </SectionHead>
         <div className="champ-leagues">
-          {[['Super Peel League', spl], ['Peel Cricket League (PCL)', pcl]].map(([leagueName, rows]) => (
+          {[['Peel Cricket League (PCL)', pcl], ['Super Peel League', spl]].map(([leagueName, rows]) => (
             <div key={leagueName} className="champ-league-block">
               <h3 className="champ-league-title">{leagueName}</h3>
               <div className="champ-grid">
@@ -286,9 +286,9 @@ function HallOfChampions() {
 }
 
 function awardIcon(award) {
-  if (award.includes('Batter') || award.includes('Batsman')) return '🏏'
-  if (award.includes('Bowler')) return '⚡'
-  if (award.includes('Fielder')) return '🧤'
+  if (award.includes('Batter') || award.includes('Batsman') || award.includes('Runs') || award.includes('4s') || award.includes('6s')) return '🏏'
+  if (award.includes('Bowler') || award.includes('Wickets') || award.includes('Dots')) return '⚡'
+  if (award.includes('Fielder') || award.includes('Catches') || award.includes('catch')) return '🧤'
   return '🏅'
 }
 
@@ -299,9 +299,15 @@ function SeasonAwards() {
         <SectionHead kicker="Individual Honours" title="Season Awards" />
         <div className="awards-grid">
           {awards.map((a) => (
-            <article key={`${a.season}-${a.award}`} className="award-card">
+            <article key={`${a.season}-${a.award}`} className={`award-card${a.src ? ' award-card-photo' : ''}`}>
+              {a.src ? (
+                <div className="award-img-wrap">
+                  <img src={a.src} alt={a.player} loading="lazy" />
+                </div>
+              ) : (
+                <div className="award-icon">{awardIcon(a.award)}</div>
+              )}
               <div className="award-ribbon">{a.award}</div>
-              <div className="award-icon">{awardIcon(a.award)}</div>
               <span className="award-season">{a.season}</span>
               <strong className="award-player">{a.player}</strong>
               {a.team !== '—' && <span className="award-team">{a.team}</span>}
