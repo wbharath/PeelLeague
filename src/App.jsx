@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { league, stats, teams, results, standings, standingsPCL2, gallery, sponsors, champions, awards } from './data'
+import { league, stats, teams, results, standings, standingsPCL2, gallery, sponsors, champions, runnersUp, awards } from './data'
 
 const teamBy = Object.fromEntries(teams.map((t) => [t.short, t]))
 
@@ -39,6 +39,7 @@ const NAV = [
   ['standings', 'Standings'],
   ['teams', 'Teams'],
   ['champions', 'Champions'],
+  ['runnersup', 'Runners-Up'],
   ['awards', 'Awards'],
   ['gallery', 'Gallery'],
   ['contact', 'Contact'],
@@ -191,19 +192,6 @@ function About() {
             Matches run every weekday from May to September, wrapping up with semi-finals and a Finals Day under the
             lights.
           </p>
-          <div className="about-champs">
-            {champions.map((c) => (
-              <div key={c.season} className="about-champ-chip">
-                <span className="about-champ-ball">
-                  {c.league === 'Peel Cricket League' ? <CricketBall size={16} /> : <TennisBall size={16} />}
-                </span>
-                <div>
-                  <small>{c.season}</small>
-                  <strong>🏆 {c.champion}</strong>
-                </div>
-              </div>
-            ))}
-          </div>
           <div className="stats">
             {stats.map((s) => (
               <div key={s.label} className="stat">
@@ -326,6 +314,45 @@ function HallOfChampions() {
                       {c.runnerUp !== '—' && (
                         <span className="champ-runner">Runners-Up: {c.runnerUp}</span>
                       )}
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function HallOfRunnersUp() {
+  const spl = runnersUp.filter((r) => r.league === 'Super Peel League')
+  const pcl = runnersUp.filter((r) => r.league === 'Peel Cricket League')
+  return (
+    <section className="section" id="runnersup">
+      <div className="container">
+        <SectionHead kicker="Runners-Up" title="Season Finalists">
+          The teams that made it to the final and pushed the champions all the way.
+        </SectionHead>
+        <div className="champ-leagues">
+          {[
+            { key: 'pcl', title: <><CricketBall size={16} /> Peel Cricket League (PCL) — Hard Ball</>, rows: pcl },
+            { key: 'spl', title: <><TennisBall size={16} /> Super Peel League (SPL) — Tennis Ball</>, rows: spl },
+          ].map(({ key, title, rows }) => (
+            <div key={key} className="champ-league-block">
+              <h3 className="champ-league-title">{title}</h3>
+              <div className="champ-grid">
+                {rows.map((r) => (
+                  <article key={r.season} className="champ-card">
+                    <div className="champ-img-wrap">
+                      <img src={r.src} alt={r.season} loading="lazy" />
+                      <span className="champ-badge">🥈</span>
+                    </div>
+                    <div className="champ-info">
+                      <span className="champ-season">{r.season}</span>
+                      <strong className="champ-name">{r.team}</strong>
+                      <span className="champ-runner">Runner-Up</span>
                     </div>
                   </article>
                 ))}
@@ -551,6 +578,7 @@ export default function App() {
         <Standings />
         <Teams />
         <HallOfChampions />
+        <HallOfRunnersUp />
         <SeasonAwards />
         <Gallery />
         <Sponsors />

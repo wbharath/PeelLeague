@@ -179,6 +179,13 @@ export const champions = [
   { season: 'SPL Season 7 · Tennis Ball', league: 'Super Peel League', champion: 'Derry Cricket Club', runnerUp: '—',               src: g('8') },
 ]
 
+export const runnersUp = [
+  { season: 'PCL Season 2 · Hard Ball',   league: 'Peel Cricket League', team: 'Haryana Hurricanes', src: g('ru3') },
+  { season: 'PCL Season 1 · Hard Ball',   league: 'Peel Cricket League', team: 'Cosmic CC',          src: g('ru1') },
+  { season: 'SPL Season 8 · Tennis Ball', league: 'Super Peel League',   team: 'Black Caps CC',      src: g('ru4') },
+  { season: 'SPL Season 7 · Tennis Ball', league: 'Super Peel League',   team: 'Brampton Sharks',    src: g('ru2') },
+]
+
 export const sponsors = [
   {
     name: 'Affinity Law',
