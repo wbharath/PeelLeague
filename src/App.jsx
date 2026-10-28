@@ -120,7 +120,7 @@ function Hero() {
             <span className="league-tag"><CricketBall size={14} /> PCL</span>
             <span className="league-tag"><TennisBall size={14} /> SPL</span>
           </div>
-          <p className="lead">{league.tagline}. Multiple Teams. One Goal. All summer long.</p>
+          <p className="lead">Welcome to Peel Region's ultimate cricket battleground. Where the GTA's finest talent collides, rivalries run deep, and every match brings the heat. Dozens of teams, relentless passion, and six months of non-stop drama — all fighting for a single crown. This isn't just summer cricket. This is Peel's Premier League.</p>
           <div className="hero-actions">
             <a href="#standings" className="btn btn-gold">View Standings</a>
             <a href={league.registerUrl} className="btn btn-ghost">Register a Team</a>
@@ -199,12 +199,14 @@ function About() {
           </div>
         </div>
         <div className="about-right">
-          <img
-            src="/gallery/champions_collage.jpg"
-            alt="SPL Champions Collage"
-            className="about-collage"
-            loading="lazy"
-          />
+          <div className="about-collage-wrap">
+            <img
+              src="/gallery/champions_collage.jpg"
+              alt="SPL Champions Collage"
+              className="about-collage"
+              loading="lazy"
+            />
+          </div>
           <div className="stats">
             {stats.map((s) => (
               <div key={s.label} className="stat">
