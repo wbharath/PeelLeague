@@ -138,7 +138,14 @@ function Hero() {
           </div>
           <div className="hero-card-label">Opening Day</div>
           <div className="champ-hero">
-            <span>📅</span>
+            <svg width="42" height="42" viewBox="0 0 42 42" fill="none" style={{flexShrink:0}}>
+              <rect x="2" y="6" width="38" height="34" rx="5" fill="#1e3a5f" stroke="rgba(245,184,0,0.6)" strokeWidth="1.5"/>
+              <rect x="2" y="6" width="38" height="12" rx="5" fill="rgba(245,184,0,0.85)"/>
+              <rect x="2" y="13" width="38" height="5" fill="rgba(245,184,0,0.85)"/>
+              <line x1="13" y1="2" x2="13" y2="12" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
+              <line x1="29" y1="2" x2="29" y2="12" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
+              <text x="21" y="34" textAnchor="middle" fontSize="11" fontWeight="700" fontFamily="Arial,sans-serif" fill="white">MAY 3</text>
+            </svg>
             <div>
               <strong>{league.seasonOpening}</strong>
               <small><CricketBall size={14} /> PCL Hard Ball &nbsp;·&nbsp; <TennisBall size={14} /> SPL Tennis Ball</small>
