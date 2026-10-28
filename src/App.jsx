@@ -198,13 +198,21 @@ function About() {
             ))}
           </div>
         </div>
-        <div className="stats">
-          {stats.map((s) => (
-            <div key={s.label} className="stat">
-              <b>{s.value}</b>
-              <span>{s.label}</span>
-            </div>
-          ))}
+        <div className="about-right">
+          <img
+            src="/gallery/champions_collage.jpg"
+            alt="SPL Champions Collage"
+            className="about-collage"
+            loading="lazy"
+          />
+          <div className="stats">
+            {stats.map((s) => (
+              <div key={s.label} className="stat">
+                <b>{s.value}</b>
+                <span>{s.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
