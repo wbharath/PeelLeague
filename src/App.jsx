@@ -197,16 +197,6 @@ function About() {
               </div>
             ))}
           </div>
-        </div>
-        <div className="about-right">
-          <div className="about-collage-wrap">
-            <img
-              src="/gallery/champions_collage.jpg"
-              alt="SPL Champions Collage"
-              className="about-collage"
-              loading="lazy"
-            />
-          </div>
           <div className="stats">
             {stats.map((s) => (
               <div key={s.label} className="stat">
@@ -215,6 +205,14 @@ function About() {
               </div>
             ))}
           </div>
+        </div>
+        <div className="about-collage-wrap">
+          <img
+            src="/gallery/champions_collage.jpg"
+            alt="SPL Champions Collage"
+            className="about-collage"
+            loading="lazy"
+          />
         </div>
       </div>
     </section>
