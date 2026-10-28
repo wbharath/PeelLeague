@@ -39,7 +39,6 @@ const NAV = [
   ['standings', 'Standings'],
   ['teams', 'Teams'],
   ['champions', 'Champions'],
-  ['runnersup', 'Runners-Up'],
   ['awards', 'Awards'],
   ['gallery', 'Gallery'],
   ['contact', 'Contact'],
@@ -177,7 +176,17 @@ function SectionHead({ kicker, title, children }) {
   )
 }
 
+const COLLAGES = [
+  { src: '/gallery/champions_collage.jpg',  alt: 'SPL Champions Collage' },
+  { src: '/gallery/runnersup_collage.jpg',  alt: 'SPL Runners-Up Collage' },
+]
+
 function About() {
+  const [active, setActive] = useState(0)
+  useEffect(() => {
+    const id = setInterval(() => setActive((a) => (a + 1) % COLLAGES.length), 10000)
+    return () => clearInterval(id)
+  }, [])
   return (
     <section className="section" id="about">
       <div className="container about">
@@ -202,12 +211,15 @@ function About() {
           </div>
         </div>
         <div className="about-collage-wrap">
-          <img
-            src="/gallery/champions_collage.jpg"
-            alt="SPL Champions Collage"
-            className="about-collage"
-            loading="lazy"
-          />
+          {COLLAGES.map((c, i) => (
+            <img
+              key={c.src}
+              src={c.src}
+              alt={c.alt}
+              className={`about-collage about-collage-slide ${i === active ? 'visible' : ''}`}
+              loading="lazy"
+            />
+          ))}
         </div>
       </div>
     </section>
@@ -326,44 +338,6 @@ function HallOfChampions() {
   )
 }
 
-function HallOfRunnersUp() {
-  const spl = runnersUp.filter((r) => r.league === 'Super Peel League')
-  const pcl = runnersUp.filter((r) => r.league === 'Peel Cricket League')
-  return (
-    <section className="section" id="runnersup">
-      <div className="container">
-        <SectionHead kicker="Runners-Up" title="Season Finalists">
-          The teams that made it to the final and pushed the champions all the way.
-        </SectionHead>
-        <div className="champ-leagues">
-          {[
-            { key: 'pcl', title: <><CricketBall size={16} /> Peel Cricket League (PCL) — Hard Ball</>, rows: pcl },
-            { key: 'spl', title: <><TennisBall size={16} /> Super Peel League (SPL) — Tennis Ball</>, rows: spl },
-          ].map(({ key, title, rows }) => (
-            <div key={key} className="champ-league-block">
-              <h3 className="champ-league-title">{title}</h3>
-              <div className="champ-grid">
-                {rows.map((r) => (
-                  <article key={r.season} className="champ-card">
-                    <div className="champ-img-wrap">
-                      <img src={r.src} alt={r.season} loading="lazy" />
-                      <span className="champ-badge">🥈</span>
-                    </div>
-                    <div className="champ-info">
-                      <span className="champ-season">{r.season}</span>
-                      <strong className="champ-name">{r.team}</strong>
-                      <span className="champ-runner">Runner-Up</span>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
 
 function awardIcon(award) {
   if (award.includes('Batter') || award.includes('Batsman') || award.includes('Runs') || award.includes('4s') || award.includes('6s')) return '🏏'
@@ -578,7 +552,6 @@ export default function App() {
         <Standings />
         <Teams />
         <HallOfChampions />
-        <HallOfRunnersUp />
         <SeasonAwards />
         <Gallery />
         <Sponsors />
